@@ -1,1 +1,2 @@
+include ':chainway'
 rootProject.name = 'aar_plugin'

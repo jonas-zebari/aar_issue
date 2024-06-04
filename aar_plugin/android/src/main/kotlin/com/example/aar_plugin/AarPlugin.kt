@@ -1,7 +1,6 @@
 package com.example.aar_plugin
 
-import androidx.annotation.NonNull
-
+import com.rscja.deviceapi.RFIDWithUHFBLE
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
@@ -19,6 +18,10 @@ class AarPlugin: FlutterPlugin, MethodCallHandler {
   override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
     channel = MethodChannel(flutterPluginBinding.binaryMessenger, "aar_plugin")
     channel.setMethodCallHandler(this)
+
+    // Access code provided in the AAR
+    val test = RFIDWithUHFBLE.getInstance()
+    test.init(flutterPluginBinding.applicationContext)
   }
 
   override fun onMethodCall(call: MethodCall, result: Result) {
